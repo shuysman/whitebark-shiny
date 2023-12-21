@@ -4,17 +4,33 @@ library(tidyverse)
 library(sf)
 library(terra)
 
-gcms <- c("Ensemble", "bcc-csm1-1", "BNU-ESM", "CanESM2", "CNRM-CM5", "CSIRO-Mk3-6-0", "GFDL-ESM2G", "HadEM2-CC365", "HadGEM2-ES365", "inmcm4", "IPSL-CM5A-LR", "IPSL-CM5A-MR", "IPSL-CM5B-LR", "MIROC-ESM", "MIROC-ESM-CHEM", "MIROC5", "MRI-CGCM3")
+gcms <- c(##"Ensemble",
+          "bcc-csm1-1",
+    "BNU-ESM",
+    "CanESM2",
+    "CNRM-CM5",
+    "CSIRO-Mk3-6-0",
+    "GFDL-ESM2G",
+    "HadEM2-CC365",
+    "HadGEM2-ES365",
+    "inmcm4",
+    "IPSL-CM5A-LR",
+    "IPSL-CM5A-MR",
+    "IPSL-CM5B-LR",
+    "MIROC-ESM",
+    "MIROC-ESM-CHEM",
+    "MIROC5",
+    "MRI-CGCM3")
 
 scenarios <- c("rcp45", "rcp85")
 
-gye_boundary <- st_read("/home/steve/OneDrive/whitebark/gyeboundary/GYE_boundary_dd.shp")
+gye_boundary <- st_read("./data/gyeboundary/GYE_boundary_dd.shp")
 
-establishment <- list.files(path = "/media/smithers/shuysman/data/out/establishment/", pattern = "annual_aet_sum_.*nc", full.names = TRUE) %>%
+establishment <- list.files(path = "./data/layers/establishment/", pattern = "annual_aet_sum_.*nc", full.names = TRUE) %>%
     rast() %>%
     terra::project(crs("EPSG:4326")) / 10
 
-mpb_files <- list.files(path = "/media/smithers/shuysman/data/out/beetle/", pattern = "Beetle_GDD_.*nc", full.names = TRUE)
+mpb_files <- list.files(path = "./data/layers/mpb/", pattern = "Beetle_GDD_.*nc", full.names = TRUE)
 
 refugia_colors = c("#00000000", "green")##colorBin("Greens", domain = NULL, bins = 2, na.color = "transparent")
 
