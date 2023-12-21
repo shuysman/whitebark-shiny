@@ -33,14 +33,25 @@ ui <- fluidPage(
             sliderInput("alpha", "Alpha", min = 0, max = 1, value = 0.5),
             hr(),
             h3("Establishment"),
+            ## AET Threshold
             sliderInput("aet_threshold", "AET Threshold", min=0, max=500, value=250),
+            ## Can turn into growth rate?
             hr(),
-            h3("Mountain Pine Beetle"), 
+            h3("Mountain Pine Beetle"),
+            ## GDD Threshold
             sliderInput("gdd_threshold", "GDD Threshold", min = 0, max = 2000, value = 833),
+            ## Consecutive years above threshold
             hr(),
             h3("White Pine Blister Rust"),
+            ## logDBH
+            ## P(WPBR Infection)
             hr(),
-            h3("Fire")
+            h3("Fire"),
+            ## Fire risk threshold
+            ## Days above fire risk threshold
+            hr(),
+            h3("Cone Production")
+            ## Not yet developed
         ),
         mainPanel(
             tabsetPanel(
